@@ -36,9 +36,8 @@ const GuessInput = () => {
             alert("Please enter a 5-letter word.")
             return
         }
-
         const feedback = guess.split("").map((char, i) =>{
-            if(targetWord === char){
+            if(targetWord[i] === char){
                 return "green";
             }else if (targetWord.includes(char)){
                 return "yellow";
@@ -48,7 +47,7 @@ const GuessInput = () => {
             })
         
         
-        guess === targetWord ? setMessage("word match not found!") : setMessage("try again!");
+        guess === targetWord ? setMessage("Yay! You guess the word!") : setMessage("try again!");
 
        
 
@@ -64,8 +63,9 @@ const GuessInput = () => {
 //render the form 
     return (
         <>
-            <button onClick={handleClick}>Generate a Word </button>
             <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
+            <button onClick={handleClick}>Generate a Word </button>
+            
         <form onSubmit={handleSubmit}>
             <div>
             <label htmlFor="guess">Enter your Guess:</label>
