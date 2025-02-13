@@ -81,27 +81,4 @@ const GuessInput = () => {
 }
 export default GuessInput;
 
-//how can I set a secret word? 
-//maybe I can have a button that generates a secret word 
-//the secret word will be choosen from the word bank 
-//loop through the words
-//how can I have a different word return with each button click? 
-//can I attach a math.random to the the array index?
 
-/*
-
-const [targetWord,setTargetWord] = useState("");
-
-the function handleClick will 1. have a loop 2. return a word assigned to a variable as a prop
-3. use that prop in the logic to find a word match 
-
-const handleClick = () => {
-    let secretWord = ""
-    for(let i = 0; i < WordBank.length; i++)
-        secretWord+= WordBank[i];
-    }
-    return setTargetWord(secretWord);
-
-*/
-
-//<button onClick={handleClick}>Generate a Word: {targetWord} {<button/>
