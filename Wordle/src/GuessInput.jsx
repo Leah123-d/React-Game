@@ -6,6 +6,7 @@ const GuessInput = () => {
     const [guess, setGuess] = useState("");
     const [message,setMessage] = useState("");
     const [targetWord,setTargetWord] = useState("");
+    const [prevGuesses, setPrevGuesses] = useState([]);
 
 
     //random word generator 
@@ -34,19 +35,21 @@ const GuessInput = () => {
             return
         }
         
-        guess === targetWord ? alert("word match not found!") : alert("try again!");
-        
-        return alert(`you entered ${guess}`)
+        guess === targetWord ? setMessage("word match not found!") : setMessage("try again!");
 
-//add logic to check against the correct word 
+        //list of previous guesses 
+        setPrevGuesses ((prevGuesses) => [...prevGuesses, guess]);
+        setGuess("");
     };
+
+
 
 
 //render the form 
     return (
         <>
             <button onClick={handleClick}>Generate a Word </button>
-            <p>Your Word is: {targetWord} </p>
+            <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
         <form onSubmit={handleSubmit}>
             <div>
             <label htmlFor="guess">Enter your Guess:</label>
@@ -59,13 +62,24 @@ const GuessInput = () => {
                 placeholder="please enter a 5-letter word"
             />
             </div>
-            <button type="submit"> Enter </button>            
+            <button type="submit"> Enter </button>         
         </form>
+
+        <p>{message}</p>
+
+        {/* displays previous guess */}
+        <h3> Previous Guesses:</h3>
+        <ul>
+            {prevGuesses.map((word,index) => (
+                <li key={index}>{word}</li>
+            ))}
+        </ul>
+
         </>
     );
 
 }
-export default GuessInput
+export default GuessInput;
 
 //how can I set a secret word? 
 //maybe I can have a button that generates a secret word 
