@@ -1,0 +1,22 @@
+.letter-box{
+    padding: 5px;
+    border-radius: 4px;
+    border: solid;
+    font-weight: bold;
+    background-color: blue;
+    color: black;
+    width: 30px;
+    text-align: center;
+    margin: 2px;
+}
+.green{
+    background-color: green;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.gray{
+    background-color: gray;
+}

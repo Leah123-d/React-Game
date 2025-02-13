@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WordBank from "./WordBank.jsx";
+import "./GuessInput.css";
 
 const GuessInput = () => {
     //intilize state using useState hook
@@ -96,8 +97,8 @@ const GuessInput = () => {
                     </span>
                     ))}
                 </li>
+                ))}
         </ul>
-    ))}
 
         </>
     );

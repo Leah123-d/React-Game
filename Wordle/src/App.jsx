@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import GuessInput from './GuessInput.jsx'
+import React, { useState } from 'react';
+import GuessInput from './GuessInput.jsx';
+
 
 
 
