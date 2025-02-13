@@ -7,6 +7,7 @@ const GuessInput = () => {
     const [message,setMessage] = useState("");
     const [targetWord,setTargetWord] = useState("");
     const [prevGuesses, setPrevGuesses] = useState([]);
+    const [colorFeedback,setColorFeedback] = useState([]);
 
 
     //random word generator 
@@ -34,11 +35,25 @@ const GuessInput = () => {
             alert("Please enter a 5-letter word.")
             return
         }
+
+        const feedback = guess.split("").map((char, i) =>{
+            if(targetWord === char){
+                return "green";
+            }else if (targetWord.includes(char)){
+                return "yellow";
+            }else{
+                return "grey";
+            }
+            })
+        
         
         guess === targetWord ? setMessage("word match not found!") : setMessage("try again!");
 
-        //list of previous guesses 
+       
+
+        //updating states
         setPrevGuesses ((prevGuesses) => [...prevGuesses, guess]);
+        setColorFeedback([...colorFeedback, feedback]);
         setGuess("");
     };
 
@@ -71,14 +86,22 @@ const GuessInput = () => {
         <h3> Previous Guesses:</h3>
         <ul>
             {prevGuesses.map((word,index) => (
-                <li key={index}>{word}</li>
-            ))}
+                <li key={index} style={{display:"flex", gap:"5px"}}>
+                    {word.split("").map((char, i) => (
+                    <span
+                        key={i}
+                        className={`letter-box ${colorFeedback[index][i]}`}
+                    >
+                        {char}
+                    </span>
+                    ))}
+                </li>
         </ul>
+    ))}
 
         </>
     );
 
 }
 export default GuessInput;
-
 
