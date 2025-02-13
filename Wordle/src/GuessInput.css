@@ -1,22 +1,43 @@
+@keyframes flip{
+    0% {
+        transform: rotateX(0);
+    }
+    50%{
+        transform: rotatex(90deg);
+    }
+    100%{
+        transform: rotateX(0);
+    }
+}
+
 .letter-box{
-    padding: 5px;
-    border-radius: 4px;
-    border: solid;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
     font-weight: bold;
-    background-color: blue;
-    color: black;
-    width: 30px;
     text-align: center;
-    margin: 2px;
+    line-height: 40px;
+    border: 2px solid #000;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: blue;
+    color: white;
 }
 .green{
     background-color: green;
+    animation: flip 0.5s ease-in-out;
 }
 
 .yellow{
     background-color: yellow;
+    animation: flip 0.5x ease-in-out;
+
 }
 
 .gray{
     background-color: gray;
+    animation: flip 0.5x ease-in-out;
 }
+

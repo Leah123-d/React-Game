@@ -8,7 +8,6 @@ const GuessInput = () => {
     const [message,setMessage] = useState("");
     const [targetWord,setTargetWord] = useState("");
     const [prevGuesses, setPrevGuesses] = useState([]);
-    const [colorFeedback,setColorFeedback] = useState([]);
 
 
     //random word generator 
@@ -36,24 +35,45 @@ const GuessInput = () => {
             alert("Please enter a 5-letter word.")
             return
         }
-        const feedback = guess.split("").map((char, i) =>{
-            if(targetWord[i] === char){
-                return "green";
-            }else if (targetWord.includes(char)){
-                return "yellow";
-            }else{
-                return "grey";
+
+        //converting words to an array to compare each letter an their index
+
+        const guessArray = guess.split("");
+        const targetArray = targetWord.split("");
+
+        //count the letters in the target word 
+        let letterCount = {};
+        targetArray.forEach((char) => {
+            letterCount[char] = (letterCount[char] || 0) + 1;
+        });
+
+        //this array will store the color feedback
+        let feedback = new Array(5).fill("gray");
+        
+        //first pass, mark correct letter green
+        guessArray.forEach((char, i) => {
+            if(char === targetArray[i]){
+                feedback[i] = "green";
+                letterCount[char]--;
             }
-            })
+        });
+        //second pass to mark misplaced letters yellow
+        guessArray.forEach((char, i) => {
+            if(char !== targetArray[i] && letterCount[char] > 0){
+                feedback[i] = "yellow";
+                letterCount[char]--;
+            }
+        });
         
         
         guess === targetWord ? setMessage("Yay! You guess the word!") : setMessage("try again!");
 
        
 
-        //updating states
-        setPrevGuesses ((prevGuesses) => [...prevGuesses, guess]);
-        setColorFeedback([...colorFeedback, feedback]);
+        //guess and colors are stored in one array 
+        setPrevGuesses ([...prevGuesses, { word: guess, feedback }]);
+
+        //this state is resetting the input
         setGuess("");
     };
 
@@ -86,13 +106,13 @@ const GuessInput = () => {
         {/* displays previous guess */}
         <h3> Previous Guesses:</h3>
         <ul>
-            {prevGuesses.map((word,index) => (
-                <li key={index} style={{display:"flex", gap:"5px"}}>
-                    {word.split("").map((char, i) => (
+            {prevGuesses.map((entry, index) => (
+                <li key={index} style={{ display:"flex", gap:"5px" }}>
+                    {entry.word.split("").map((char, i) => (
                     <span
                         key={i}
-                        className={`letter-box ${colorFeedback[index][i]}`}
-                    >
+                        className={`letter-box ${entry.feedback[i]}`}>
+
                         {char}
                     </span>
                     ))}
