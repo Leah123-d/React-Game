@@ -5,6 +5,19 @@ const GuessInput = () => {
     //intilize state using useState hook
     const [guess, setGuess] = useState("");
     const [message,setMessage] = useState("");
+    const [targetWord,setTargetWord] = useState("");
+
+
+    //random word generator 
+    //math random, bc we will choose a word based on the index 
+    const handleClick = () => {
+        let randomIndex = Math.floor(Math.random() * WordBank.length); //this will return a random index
+        let secretWord = WordBank[randomIndex]; //we are assigning the index to the WordBank to select a random word
+
+        setTargetWord(secretWord); //we are assigning the secret word to setTargetWord state
+
+        console.log("New secret word:", secretWord);
+    }
 
 
     //handle form input changes
@@ -20,13 +33,20 @@ const GuessInput = () => {
             alert("Please enter a 5-letter word.")
             return
         }
+        
+        guess === targetWord ? alert("word match not found!") : alert("try again!");
+        
         return alert(`you entered ${guess}`)
 
 //add logic to check against the correct word 
     };
+
+
 //render the form 
     return (
         <>
+            <button onClick={handleClick}>Generate a Word </button>
+            <p>Your Word is: {targetWord} </p>
         <form onSubmit={handleSubmit}>
             <div>
             <label htmlFor="guess">Enter your Guess:</label>
@@ -48,3 +68,26 @@ const GuessInput = () => {
 export default GuessInput
 
 //how can I set a secret word? 
+//maybe I can have a button that generates a secret word 
+//the secret word will be choosen from the word bank 
+//loop through the words
+//how can I have a different word return with each button click? 
+//can I attach a math.random to the the array index?
+
+/*
+
+const [targetWord,setTargetWord] = useState("");
+
+the function handleClick will 1. have a loop 2. return a word assigned to a variable as a prop
+3. use that prop in the logic to find a word match 
+
+const handleClick = () => {
+    let secretWord = ""
+    for(let i = 0; i < WordBank.length; i++)
+        secretWord+= WordBank[i];
+    }
+    return setTargetWord(secretWord);
+
+*/
+
+//<button onClick={handleClick}>Generate a Word: {targetWord} {<button/>
