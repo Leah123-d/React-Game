@@ -88,7 +88,7 @@ const GuessInput = () => {
 
 
 
-//render the form 
+    //render the form 
     return (
         <>
             <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
