@@ -1,13 +1,13 @@
-## Welcome to Ladle: A word Guessing Game!
+# Welcome to Ladle: A word Guessing Game!
 
-Welcome! In this game, you guess a word to match with the secret word. This project highlights the skills of React and useState hooks. Especially, returning different messages or feedback on guesses depending on the user's input.
+In this game, you guess a word to match with the secret word. This project highlights the skills of React and useState hooks. Especially, returning different messages or feedback on guesses depending on the user's input.
 
-Installation
+## Installation
 Clone the repository
 cd into the repository React-Game
 run npm install then npm run dev 
 
-Troubleshooting Issues:
+## Troubleshooting Issues:
 If the game is not displaying in preview, please take the following steps.
 
 
@@ -21,7 +21,7 @@ Review the GuessInput.jsx file to make sure the states exist and are present on 
 
 Review the console to see if there are any additional error listed.
 
-Software Used
+## Software Used
 This game was built in Visual Studio Code using React + Vite.
 
-Gameplay preview: 
+## Gameplay preview: 
