@@ -1,26 +1,14 @@
 import React, { useState } from "react";
-import WordBank from "./WordBank.jsx";
 import "./GuessInput.css";
 
-const GuessInput = () => {
+const GuessInput = ( {targetWord, handleClick }) => {
     //intilizing state using useState hook
     const [guess, setGuess] = useState("");
     const [guessCount, setGuessCount] = useState(0);
     const [message,setMessage] = useState("");
-    const [targetWord,setTargetWord] = useState("");
     const [prevGuesses, setPrevGuesses] = useState([]);
     const [revealedLetters, setRevealedLetters] = useState([])
 
-    //random word generator 
-    //Math random method is used to select a random index of a word from the WordBank component
-    const handleClick = () => {
-        let randomIndex = Math.floor(Math.random() * WordBank.length); //this will return a random index
-        let secretWord = WordBank[randomIndex]; //we are assigning the index to the WordBank to select a random word
-
-        setTargetWord(secretWord); //we are assigning the secret word to setTargetWord state
-
-        console.log("New secret word:", secretWord);
-    }
 
     //handle form input changes
     const handleChange = (e) => {
@@ -81,7 +69,7 @@ const GuessInput = () => {
 
     return (
         <>
-        <h1>Ladle: A word Guessing Game!</h1>
+        <h1>Ladle: A Word Guessing Game!</h1>
 
             <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
             <button onClick={handleClick}>Generate a Word </button>
