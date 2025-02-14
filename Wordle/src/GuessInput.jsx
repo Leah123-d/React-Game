@@ -93,6 +93,7 @@ const GuessInput = () => {
 //render the form 
     return (
         <>
+        <h1>Ladle: A word Guessing Game!</h1>
             <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
             <button onClick={handleClick}>Generate a Word </button>
             
