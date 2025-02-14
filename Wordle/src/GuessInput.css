@@ -1,0 +1,50 @@
+@keyframes flip{
+    0% {
+        transform: rotateX(0);
+    }
+    50%{
+        transform: rotatex(90deg);
+    }
+    100%{
+        transform: rotateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.letter-box{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    border: 2px solid #000;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: blue;
+    transition: background-color 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
+}
+.green{
+    background-color: green;
+    animation: flip 0.5s ease-in-out;
+}
+
+.yellow{
+    background-color: yellow;
+    animation: flip 0.5s ease-in-out;
+
+}
+
+.gray{
+    background-color: gray;
+    animation: flip 0.5s ease-in-out;
+}
+
