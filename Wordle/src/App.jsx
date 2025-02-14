@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import GuessInput from './GuessInput.jsx';
 
-
-
-
 function App() {
 
 

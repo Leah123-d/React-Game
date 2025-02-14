@@ -3,7 +3,7 @@ import WordBank from "./WordBank.jsx";
 import "./GuessInput.css";
 
 const GuessInput = () => {
-    //intilize state using useState hook
+    //intilizing state using useState hook
     const [guess, setGuess] = useState("");
     const [guessCount, setGuessCount] = useState(0);
     const [message,setMessage] = useState("");
@@ -11,9 +11,8 @@ const GuessInput = () => {
     const [prevGuesses, setPrevGuesses] = useState([]);
     const [revealedLetters, setRevealedLetters] = useState([])
 
-
     //random word generator 
-    //math random, bc we will choose a word based on the index 
+    //Math random method is used to select a random index of a word from the WordBank component
     const handleClick = () => {
         let randomIndex = Math.floor(Math.random() * WordBank.length); //this will return a random index
         let secretWord = WordBank[randomIndex]; //we are assigning the index to the WordBank to select a random word
@@ -23,10 +22,9 @@ const GuessInput = () => {
         console.log("New secret word:", secretWord);
     }
 
-
     //handle form input changes
     const handleChange = (e) => {
-        setGuess(e.target.value.toUpperCase()); //convert to uppercase
+        setGuess(e.target.value.toUpperCase());
     };
     
     //handle form submission 
@@ -38,28 +36,23 @@ const GuessInput = () => {
             return
         }
 
-        //converting words to an array to compare each letter an their index
-
         const guessArray = guess.split("");
         const targetArray = targetWord.split("");
 
-        //count the letters in the target word 
         let letterCount = {};
         targetArray.forEach((char) => {
             letterCount[char] = (letterCount[char] || 0) + 1;
         });
 
-        //this array will store the color feedback
         let feedback = new Array(5).fill("gray");
         
-        //first pass, mark correct letter green
         guessArray.forEach((char, i) => {
             if(char === targetArray[i]){
                 feedback[i] = "green";
                 letterCount[char]--;
             }
         });
-        //second pass to mark misplaced letters yellow
+
         guessArray.forEach((char, i) => {
             if(char !== targetArray[i] && letterCount[char] > 0){
                 feedback[i] = "yellow";
@@ -83,17 +76,13 @@ const GuessInput = () => {
             setPrevGuesses((prevGuesses) => [...prevGuesses, { word: guess, feedback}]);
         }, 2000)
        
-
         setGuess("");
     };
 
-
-
-
-//render the form 
     return (
         <>
         <h1>Ladle: A word Guessing Game!</h1>
+
             <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
             <button onClick={handleClick}>Generate a Word </button>
             
@@ -130,8 +119,6 @@ const GuessInput = () => {
             </>
             )}
 
-
-            {/* displays previous guess */}
             <h3> Previous Guesses:</h3>
             <ul>
                 {prevGuesses.map((entry, index) => (

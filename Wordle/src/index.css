@@ -9,7 +9,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 body {
   margin-left: 100px;
   display: flex;
@@ -17,7 +16,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-size: 22px;
-
 }
 
 h1 {
@@ -37,6 +35,5 @@ button {
   transition: border-color 0.25s;
   width: 200px;
   margin-top: 20px;
-  
 }
 
