@@ -76,12 +76,12 @@ const GuessInput = () => {
                 setRevealedLetters((prev) => [...prev, { char, color: feedback[i]}])
             }, i * 300);
         })
+
+        setTimeout(() => {
+            setPrevGuesses((prevGuesses) => [...prevGuesses, { word: guess, feedback}]);
+        }, 2000)
        
 
-        //guess and colors are stored in one array 
-        setPrevGuesses ([...prevGuesses, { word: guess, feedback }]);
-
-        //this state is resetting the input
         setGuess("");
     };
 
@@ -94,50 +94,53 @@ const GuessInput = () => {
             <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
             <button onClick={handleClick}>Generate a Word </button>
             
-        <form onSubmit={handleSubmit}>
-            <div>
-            <label htmlFor="guess">Enter your Guess:</label>
-            <input 
-                type="text"
-                name="guess"
-                maxLength={5}
-                value={guess}
-                onChange={handleChange}
-                placeholder="please enter a 5-letter word"
-            />
-            </div>
-            <button type="submit"> Enter </button>         
-        </form>
+            <form onSubmit={handleSubmit}>
+                <div>
+                <label htmlFor="guess">Enter your Guess:</label>
+                <input 
+                    type="text"
+                    name="guess"
+                    maxLength={5}
+                    value={guess}
+                    onChange={handleChange}
+                    placeholder="please enter a 5-letter word"
+                />
+                </div>
+                <button type="submit"> Enter </button>         
+            </form>
 
-        <p>{message}</p>
+            <p>{message}</p>
 
-        {/*Revealing letters one at a time */}
-                <h3>Current Guess:</h3>
-        <ul style={{display:"flex", gap:"5px"}}>
-            {revealedLetters.map((entry, i) => (
-                <span key={i} className={`letter-box ${entry.color}`}>
-                    {entry.char}    
-                </span>
-            ))}
-        </ul>
-
-        {/* displays previous guess */}
-        <h3> Previous Guesses:</h3>
-        <ul>
-            {prevGuesses.map((entry, index) => (
-                <li key={index} style={{ display:"flex", gap:"5px" }}>
-                    {entry.word.split("").map((char, i) => (
-                    <span
-                        key={`${index} - ${i}`}
-                        className={`letter-box ${entry.feedback[i]}`}>
-
-                        {char}
+            {/*Revealing letters one at a time */}
+            {revealedLetters.length > 0 && (
+                <>
+                    <h3>Current Guess:</h3>
+            <ul style={{display:"flex", gap:"5px"}}>
+                {revealedLetters.map((entry, i) => (
+                    <span key={i} className={`letter-box ${entry.color}`}>
+                        {entry.char}    
                     </span>
-                    ))}
-                </li>
                 ))}
-        </ul>
+            </ul>
+            </>
+            )}
 
+
+            {/* displays previous guess */}
+            <h3> Previous Guesses:</h3>
+            <ul>
+                {prevGuesses.map((entry, index) => (
+                    <li key={index} style={{ display:"flex", gap:"5px" }}>
+                        {entry.word.split("").map((char, i) => (
+                        <span
+                            key={`${index} - ${i}`}
+                            className={`letter-box ${entry.feedback[i]}`}>
+                            {char}
+                        </span>
+                        ))}
+                    </li>
+                    ))}
+            </ul>
 
         </>
     );
