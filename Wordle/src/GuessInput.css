@@ -1,12 +1,3 @@
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
 @keyframes flip{
     0% {
         transform: rotateX(0);
@@ -18,6 +9,12 @@
         transform: rotateX(0);
     }
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 
 .letter-box{
     display: inline-block;
@@ -32,6 +29,8 @@
     padding: 10px;
     border-radius: 4px;
     background-color: blue;
+    transition: background-color 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-in-out;
 }
 .green{
     background-color: green;

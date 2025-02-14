@@ -69,6 +69,13 @@ const GuessInput = () => {
         
         guess === targetWord ? setMessage("🥳 Correct!") : setMessage("Try again!");
 
+        setRevealedLetters([]);
+
+        guessArray.forEach((char, i ) => {
+            setTimeout(() => {
+                setRevealedLetters((prev) => [...prev, { char, color: feedback[i]}])
+            }, i * 300);
+        })
        
 
         //guess and colors are stored in one array 
@@ -104,11 +111,21 @@ const GuessInput = () => {
 
         <p>{message}</p>
 
+        {/*Revealing letters one at a time */}
+                <h3>Current Guess:</h3>
+        <ul style={{display:"flex", gap:"5px"}}>
+            {revealedLetters.map((entry, i) => (
+                <span key={i} className={`letter-box ${entry.color}`}>
+                    {entry.char}    
+                </span>
+            ))}
+        </ul>
+
         {/* displays previous guess */}
         <h3> Previous Guesses:</h3>
         <ul>
             {prevGuesses.map((entry, index) => (
-                <li key={index} className="fade-in" style={{ display:"flex", gap:"5px" }}>
+                <li key={index} style={{ display:"flex", gap:"5px" }}>
                     {entry.word.split("").map((char, i) => (
                     <span
                         key={`${index} - ${i}`}
@@ -120,6 +137,7 @@ const GuessInput = () => {
                 </li>
                 ))}
         </ul>
+
 
         </>
     );
