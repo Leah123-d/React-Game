@@ -5,6 +5,7 @@ import "./GuessInput.css";
 const GuessInput = () => {
     //intilize state using useState hook
     const [guess, setGuess] = useState("");
+    const [guessCount, setGuessCount] = useState(0);
     const [message,setMessage] = useState("");
     const [targetWord,setTargetWord] = useState("");
     const [prevGuesses, setPrevGuesses] = useState([]);
@@ -66,8 +67,9 @@ const GuessInput = () => {
             }
         });
         
+        setGuessCount((prev) => prev +1);
         
-        guess === targetWord ? setMessage("🥳 Correct!") : setMessage("Try again!");
+        guess === targetWord ? setMessage(`🥳 Correct! You completed this in ${guessCount + 1} guesses`) : setMessage(`Try again! You're on guess ${guessCount + 1}`);
 
         setRevealedLetters([]);
 
@@ -91,6 +93,7 @@ const GuessInput = () => {
 //render the form 
     return (
         <>
+        <h1>Ladle: A word Guessing Game!</h1>
             <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
             <button onClick={handleClick}>Generate a Word </button>
             
@@ -104,6 +107,8 @@ const GuessInput = () => {
                     value={guess}
                     onChange={handleChange}
                     placeholder="please enter a 5-letter word"
+                    disabled={!targetWord}
+                    className="input"
                 />
                 </div>
                 <button type="submit"> Enter </button>         
