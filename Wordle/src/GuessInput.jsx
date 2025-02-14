@@ -8,6 +8,7 @@ const GuessInput = () => {
     const [message,setMessage] = useState("");
     const [targetWord,setTargetWord] = useState("");
     const [prevGuesses, setPrevGuesses] = useState([]);
+    const [revealedLetters, setRevealedLetters] = useState([])
 
 
     //random word generator 
@@ -66,7 +67,7 @@ const GuessInput = () => {
         });
         
         
-        guess === targetWord ? setMessage("Yay! You guess the word!") : setMessage("try again!");
+        guess === targetWord ? setMessage("🥳 Correct!") : setMessage("Try again!");
 
        
 
@@ -107,10 +108,10 @@ const GuessInput = () => {
         <h3> Previous Guesses:</h3>
         <ul>
             {prevGuesses.map((entry, index) => (
-                <li key={index} style={{ display:"flex", gap:"5px" }}>
+                <li key={index} className="fade-in" style={{ display:"flex", gap:"5px" }}>
                     {entry.word.split("").map((char, i) => (
                     <span
-                        key={i}
+                        key={`${index} - ${i}`}
                         className={`letter-box ${entry.feedback[i]}`}>
 
                         {char}

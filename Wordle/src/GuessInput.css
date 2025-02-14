@@ -1,3 +1,12 @@
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
 @keyframes flip{
     0% {
         transform: rotateX(0);
@@ -23,7 +32,6 @@
     padding: 10px;
     border-radius: 4px;
     background-color: blue;
-    color: white;
 }
 .green{
     background-color: green;
@@ -32,12 +40,12 @@
 
 .yellow{
     background-color: yellow;
-    animation: flip 0.5x ease-in-out;
+    animation: flip 0.5s ease-in-out;
 
 }
 
 .gray{
     background-color: gray;
-    animation: flip 0.5x ease-in-out;
+    animation: flip 0.5s ease-in-out;
 }
 
