@@ -1,4 +1,4 @@
-Welceom to Ladle: A word Guessing Game!
+## Welcome to Ladle: A word Guessing Game!
 
 Welcome! In this game, you guess a word to match with the secret word. This project highlights the skills of React and useState hooks. Especially, returning different messages or feedback on guesses depending on the user's input.
 
