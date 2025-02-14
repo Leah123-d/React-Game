@@ -27,3 +27,6 @@ In this game, you guess a word to match with the secret word. This project highl
 <p>This game was built in Visual Studio Code using React + Vite.</p>
 
 ## Gameplay preview: 
+
+https://github.com/user-attachments/assets/dc377ade-7fb7-492a-b66c-c148a62fe249
+
