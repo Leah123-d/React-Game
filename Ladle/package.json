@@ -1,17 +1,16 @@
 {
-  "homepage": "http://Leah123-d.github.io/React-Game",
-  "name": "wordle",
+  "homepage": "http://Leah123-d.github.io/React-Game/",
+  "name": "ladle",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.0.0",
