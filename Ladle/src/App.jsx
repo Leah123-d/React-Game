@@ -21,6 +21,7 @@ function App() {
   return (
     <>
     <GuessInput targetWord={targetWord} handleClick={handleClick} />
+    {/* these are props that are being sent to the child component */}
 
     </>
     )

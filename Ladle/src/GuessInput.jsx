@@ -15,7 +15,7 @@ const GuessInput = ( {targetWord, handleClick }) => {
         setGuess(e.target.value.toUpperCase());
     };
     
-    //handle form submission 
+    //handle game submission 
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -71,11 +71,11 @@ const GuessInput = ( {targetWord, handleClick }) => {
         <>
         <h1>Ladle: A Word Guessing Game!</h1>
 
-            <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
-            <button onClick={handleClick}>Generate a Word </button>
-            
-            <form onSubmit={handleSubmit}>
-                <div>
+        <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
+        <button onClick={handleClick}>Generate a Word </button>
+        
+        <form onSubmit={handleSubmit}>
+            <div>
                 <label htmlFor="guess">Enter your Guess:</label>
                 <input 
                     type="text"
@@ -88,43 +88,42 @@ const GuessInput = ( {targetWord, handleClick }) => {
                     className="input"
                 />
                 </div>
-                <button type="submit"> Enter </button>         
-            </form>
+            <button type="submit"> Enter </button>         
+        </form>
 
-            <p>{message}</p>
+        <p>{message}</p>
 
-            {/*Revealing letters one at a time */}
-            {revealedLetters.length > 0 && (
-                <>
-                    <h3>Current Guess:</h3>
+        {/*Revealing letters one at a time */}
+        {revealedLetters.length > 0 && (
+            <>
+            <h3>Current Guess:</h3>
             <ul style={{display:"flex", gap:"5px"}}>
-                {revealedLetters.map((entry, i) => (
-                    <span key={i} className={`letter-box ${entry.color}`}>
-                        {entry.char}    
+            {revealedLetters.map((entry, i) => (
+                <span key={i} className={`letter-box ${entry.color}`}>
+                    {entry.char}    
+                </span>
+            ))}
+        </ul>
+        </>
+        )}
+
+        <h3> Previous Guesses:</h3>
+        <ul>
+            {prevGuesses.map((entry, index) => (
+                <li key={index} style={{ display:"flex", gap:"5px" }}>
+                    {entry.word.split("").map((char, i) => (
+                    <span
+                        key={`${index} - ${i}`}
+                        className={`letter-box ${entry.feedback[i]}`}>
+                        {char}
                     </span>
-                ))}
-            </ul>
-            </>
-            )}
-
-            <h3> Previous Guesses:</h3>
-            <ul>
-                {prevGuesses.map((entry, index) => (
-                    <li key={index} style={{ display:"flex", gap:"5px" }}>
-                        {entry.word.split("").map((char, i) => (
-                        <span
-                            key={`${index} - ${i}`}
-                            className={`letter-box ${entry.feedback[i]}`}>
-                            {char}
-                        </span>
-                        ))}
-                    </li>
                     ))}
-            </ul>
-
+                </li>
+                ))}
+        </ul>
         </>
     );
 
-}
+} // need to figure out where this bracket goes for formatting.
 export default GuessInput;
 

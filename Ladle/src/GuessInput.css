@@ -21,7 +21,6 @@
     margin-top: 20px;
     font-size: 20px;
     margin-left: 5px;
-
 }
 
 .letter-box{
@@ -40,6 +39,7 @@
     transition: background-color 0.3s ease-in-out;
     animation: fadeIn 0.3s ease-in-out;
 }
+
 .green{
     background-color: rgba(12, 109, 12, 0.823);
     animation: flip 0.5s ease-in-out;
