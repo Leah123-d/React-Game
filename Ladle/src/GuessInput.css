@@ -48,11 +48,20 @@
 .yellow{
     background-color: rgba(234, 234, 15, 0.849);
     animation: flip 0.5s ease-in-out;
-
 }
 
 .gray{
     background-color: rgba(128, 128, 128, 0.71);
     animation: flip 0.5s ease-in-out;
+}
+
+#restart {
+    display: inline;
+    font-size: 55px;
+    color: #c5b9da;
+    cursor: pointer;
+    user-select: none;
+    margin-left: 30px;
+    font-weight: bold;
 }
 

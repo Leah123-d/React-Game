@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./GuessInput.css";
 
-const GuessInput = ( {targetWord, handleClick }) => {
+const GuessInput = ({ targetWord, handleClick, handleReset }) => {
     //intilizing state using useState hook
     const [guess, setGuess] = useState("");
     const [guessCount, setGuessCount] = useState(0);
@@ -9,6 +9,14 @@ const GuessInput = ( {targetWord, handleClick }) => {
     const [prevGuesses, setPrevGuesses] = useState([]);
     const [revealedLetters, setRevealedLetters] = useState([])
 
+    const resetGame = () => {
+        setGuess("");
+        setGuessCount(0);
+        setMessage("");
+        setPrevGuesses([]);
+        setRevealedLetters([]);
+        handleReset();
+    };
 
     //handle form input changes
     const handleChange = (e) => {
@@ -72,7 +80,10 @@ const GuessInput = ( {targetWord, handleClick }) => {
         <h1>Ladle: A Word Guessing Game!</h1>
 
         <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
-        <button onClick={handleClick}>Generate a Word </button>
+        <div>
+            <button onClick={handleClick}>Generate a Word</button>
+            <div id="restart" onClick={resetGame}>↺</div>
+        </div>
         
         <form onSubmit={handleSubmit}>
             <div>

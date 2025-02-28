@@ -16,11 +16,17 @@ function App() {
     console.log("New secret word:", secretWord);
     }
 
-          
+  const handleReset = () => {
+    setTargetWord("");
+  }
 
   return (
     <>
-    <GuessInput targetWord={targetWord} handleClick={handleClick} />
+    <GuessInput 
+      targetWord={targetWord} 
+      handleClick={handleClick}
+      handleReset={handleReset}
+    />
     {/* these are props that are being sent to the child component */}
 
     </>
