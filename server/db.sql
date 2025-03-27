@@ -105,13 +105,12 @@ VALUES
 				('pride'),
 				('board'),
 				('suite'),
-				('wrist');
+				('panda');
     
     
 --
 -- PostgreSQL database dump complete
 --
-
 
 
 
