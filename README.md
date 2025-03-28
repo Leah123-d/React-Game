@@ -3,12 +3,16 @@
 In this game, you guess a word to match with the secret word. This project highlights the skills of React and useState hooks. Especially, returning different messages or feedback on guesses depending on the user's input.
 
 ## Installation
+
 <p>Clone the repository</p>
+
 <p>cd into the repository React-Game</p>
+
 <p>run npm install then npm run dev</p>
 
 ## Troubleshooting Issues:
 <ol>
+
 <li>If the game is not displaying in preview, please take the following steps.</li>
 
 
@@ -24,6 +28,7 @@ In this game, you guess a word to match with the secret word. This project highl
 </ol>
 
 ## Software Used
+
 <p>This game was built in Visual Studio Code using React + Vite.</p>
 
 ## Gameplay preview: 
