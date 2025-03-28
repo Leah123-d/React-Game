@@ -30,3 +30,6 @@ In this game, you guess a word to match with the secret word. This project highl
 
 https://github.com/user-attachments/assets/dc377ade-7fb7-492a-b66c-c148a62fe249
 
+## Remaster preview:
+![ladleremaster](https://github.com/user-attachments/assets/1f40b22f-1f97-4a39-aa2a-18d3acdfb95f)
+
