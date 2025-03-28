@@ -77,7 +77,7 @@ export const deletePlayer = async(req,res) => {
 
 export const getScoreboard = async(req,res) => {
   try{
-    const result = await dbConnection.query(`SELECT player_name, player_score FROM players ORDER BY player_score DESC ;`);
+    const result = await dbConnection.query(`SELECT player_name, player_score FROM players WHERE player_score IS NOT NULL ORDER BY player_score DESC ;`);
       res.json(result.rows);
   }catch (error){
       console.error('error fetching players data: ', error);

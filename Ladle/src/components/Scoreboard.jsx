@@ -6,20 +6,18 @@ import { useState, useEffect } from 'react'
 function Scoreboard() {
   const [scoreboard, setScoreboard] = useState([]);
 
-
   const fetchScoreboard = async () => { 
     try {
       const res = await fetch("/players/scoreboard");
       if(!res.ok) throw new Error("Failed to fetch scoreboard");
       const data = await res.json();
       console.log("Fetched scoreboard: ", data)
-      return setScoreboard([data]);
+      return setScoreboard(data);
     } catch(error) {
       console.error("Error fetching scoreboard: ", error);
       //setErrorHandle(true); 
     }
   };
-
   useEffect(() => {
     fetchScoreboard();
   }, []);
@@ -31,7 +29,7 @@ function Scoreboard() {
        
         {fetchScoreboard && (scoreboard.map((score, index) => (
         <div key={index}>
-        <p>Player Name: {score.palyer_name}</p>
+        <p>Player Name: {score.player_name}</p>
         <p>Scores: {score.player_score}</p>
 
         </div>

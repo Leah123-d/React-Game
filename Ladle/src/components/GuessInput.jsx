@@ -1,7 +1,15 @@
+//To Do:
+    //figure out why the colorsa are not working 
+    //there might be an issue with how the word is structured
+    //can pass the player's name here to display on the screen
+    //send the game title to the setup page 
+
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import "./GuessInput.css";
+import "../GuessInput.css";
 
 const GuessInput = ( {targetWord, handleClick }) => {
+
     //intilizing state using useState hook
     const [guess, setGuess] = useState("");
     const [guessCount, setGuessCount] = useState(0);
@@ -25,7 +33,7 @@ const GuessInput = ( {targetWord, handleClick }) => {
         }
 
         const guessArray = guess.split("");
-        const targetArray = targetWord.split("");
+        const targetArray = targetWord?.word ? targetWord.word.split("") : [];
 
         let letterCount = {};
         targetArray.forEach((char) => {
@@ -47,10 +55,16 @@ const GuessInput = ( {targetWord, handleClick }) => {
                 letterCount[char]--;
             }
         });
-        
-        setGuessCount((prev) => prev +1);
-        
-        guess === targetWord ? setMessage(`🥳 Correct! You completed this in ${guessCount + 1} guesses`) : setMessage(`Try again! You're on guess ${guessCount + 1}`);
+
+        const newGuessCount = guessCount + 1;
+        setGuessCount(newGuessCount);
+
+        if (guess.toUpperCase() === targetWord.word.toUpperCase()){
+            setMessage(`🥳 Correct! You completed this in ${guessCount + 1} guesses`)
+
+        }else{ 
+            setMessage(`Try again! You're on guess ${guessCount + 1}`); 
+        }
 
         setRevealedLetters([]);
 
@@ -71,7 +85,7 @@ const GuessInput = ( {targetWord, handleClick }) => {
         <>
         <h1>Ladle: A Word Guessing Game!</h1>
 
-        <p>Your Word is: {targetWord ? "Hidden 🤫" : "Click button to start!"} </p>
+        <p>Your Word is: {targetWord.word ? "Hidden 🤫" : "Click button to start!"} </p>
         <button onClick={handleClick}>Generate a Word </button>
         
         <form onSubmit={handleSubmit}>
@@ -84,7 +98,7 @@ const GuessInput = ( {targetWord, handleClick }) => {
                     value={guess}
                     onChange={handleChange}
                     placeholder="please enter a 5-letter word"
-                    disabled={!targetWord}
+                    disabled={!targetWord.word}
                     className="input"
                 />
                 </div>
