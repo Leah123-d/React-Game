@@ -63,21 +63,21 @@ export const updatePlayer = async(req,res) => {
 
 export const deletePlayer = async(req,res) => {
   try{
-    const { player_id } = req.params;
-    const result = await dbConnection.query(`DELETE FROM players WHERE player_id = $1 RETURNING *`, [player_id]);
+    const { player_name } = req.params;
+    const result = await dbConnection.query(`DELETE FROM players WHERE player_name = $1 RETURNING *`, [player_id]);
     if(result.rowCount === 0){
         return res.send( { "error": "player not found" } );
     }
-    res.send(`player id: ${player_id} has been deleted`);
+    res.send(`player id: ${player_name} has been deleted`);
     } catch (error){
-        console.error(`Could not locate player with player_id: ${player_id}: `, error);
+        console.error(`Could not locate player with player_id: ${player_name}: `, error);
     }
 }
 
 
 export const getScoreboard = async(req,res) => {
   try{
-    const result = await dbConnection.query(`SELECT player_name, player_score FROM players WHERE player_score IS NOT NULL ORDER BY player_score DESC ;`);
+    const result = await dbConnection.query(`SELECT player_name, player_score FROM players ORDER BY player_score DESC ;`);
       res.json(result.rows);
   }catch (error){
       console.error('error fetching players data: ', error);

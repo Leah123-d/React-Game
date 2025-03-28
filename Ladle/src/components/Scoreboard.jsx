@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react'
 
-function Scoreboard() {
+function Scoreboard({deletePlayer}) {
   const [scoreboard, setScoreboard] = useState([]);
 
   const fetchScoreboard = async () => { 
@@ -31,7 +31,7 @@ function Scoreboard() {
         <div key={index}>
         <p>Player Name: {score.player_name}</p>
         <p>Scores: {score.player_score}</p>
-
+        <button onClick={() =>  deletePlayer(score.player_name)}>delete</button>
         </div>
         ))
       )}

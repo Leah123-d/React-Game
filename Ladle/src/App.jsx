@@ -87,15 +87,15 @@ function App() {
     } 
   };
 
-  const deleteContact = async (id) => {
-    console.log("Deleting contact with ID:", id);
+  const deletePlayer = async (name) => {
+    console.log("Deleting player with ID:", name);
       try{
-      const url = `/players/${ id }`; 
+      const url = `/players/${ name }`; 
       const response = await fetch(url, {method: 'DELETE'});
         if(!response.ok){
           throw new Error('something went wrong')
         }
-        console.log(`${id} entry successfully deleted!`);
+        console.log(`${name} entry successfully deleted!`);
       }
       catch(error) {
         console.log(error);
@@ -117,7 +117,8 @@ function App() {
     />
 
     {isScoreboardOpen ?
-    <Scoreboard /> : null}
+    <Scoreboard 
+    deleteContact={deletePlayer}/> : null}
 
     {isGameOpen ?
     <GuessInput 
