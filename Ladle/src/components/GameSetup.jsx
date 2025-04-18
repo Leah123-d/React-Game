@@ -4,6 +4,7 @@
   //button to view score 
   //rest button to clear name
 
+import React from "react";
 import { useState } from 'react'
 
 

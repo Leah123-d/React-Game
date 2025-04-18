@@ -1,6 +1,4 @@
-//TO-DO 
-//Test this component to see if it's returning the information you need
-
+import React from "react";
 import { useState, useEffect } from 'react'
 
 function Scoreboard({deletePlayer}) {
